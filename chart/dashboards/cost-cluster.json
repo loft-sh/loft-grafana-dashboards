@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1602082648937,
+  "iteration": 1602514350584,
   "links": [],
   "panels": [
     {
@@ -244,7 +244,7 @@
       "fill": 3,
       "fillGradient": 0,
       "gridPos": {
-        "h": 11,
+        "h": 9,
         "w": 24,
         "x": 0,
         "y": 5
@@ -333,7 +333,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 16
+        "y": 14
       },
       "id": 23,
       "panels": [],
@@ -465,7 +465,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 17
+        "y": 15
       },
       "id": 21,
       "options": {
@@ -476,7 +476,7 @@
       "pluginVersion": "7.2.0",
       "targets": [
         {
-          "expr": "sum(kube_namespace_labels) by (label_kiosk_sh_account)",
+          "expr": "sum(kube_namespace_labels{label_kiosk_sh_account!=\"\"}) by (label_kiosk_sh_account)",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -498,6 +498,7 @@
         {
           "expr": "sum(sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_rate) by (namespace) * on(namespace) group_left(label_kiosk_sh_account) kube_namespace_labels) by (label_kiosk_sh_account)",
           "format": "table",
+          "hide": false,
           "instant": true,
           "interval": "",
           "intervalFactor": 2,
@@ -507,6 +508,7 @@
         {
           "expr": "sum(sum(container_memory_working_set_bytes{container!=\"\", image!=\"\"}) by (namespace) * on(namespace) group_left(label_kiosk_sh_account) kube_namespace_labels) by (label_kiosk_sh_account) / 1024 / 1024",
           "format": "table",
+          "hide": false,
           "instant": true,
           "interval": "",
           "intervalFactor": 2,
@@ -519,20 +521,18 @@
       "title": "Total Cost",
       "transformations": [
         {
+          "id": "merge",
+          "options": {}
+        },
+        {
           "id": "organize",
           "options": {
             "excludeByName": {
               "Time": true
             },
             "indexByName": {},
-            "renameByName": {
-              "Time": ""
-            }
+            "renameByName": {}
           }
-        },
-        {
-          "id": "merge",
-          "options": {}
         }
       ],
       "type": "table"
@@ -544,7 +544,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 24
+        "y": 22
       },
       "id": 11,
       "panels": [],
@@ -566,10 +566,10 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 11,
+        "h": 8,
         "w": 24,
         "x": 0,
-        "y": 25
+        "y": 23
       },
       "hiddenSeries": false,
       "id": 13,
@@ -655,7 +655,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 36
+        "y": 31
       },
       "id": 15,
       "panels": [],
@@ -763,10 +763,10 @@
         ]
       },
       "gridPos": {
-        "h": 8,
+        "h": 7,
         "w": 24,
         "x": 0,
-        "y": 37
+        "y": 32
       },
       "id": 17,
       "options": {
