@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1602514350584,
+  "iteration": 1602515843934,
   "links": [],
   "panels": [
     {
@@ -486,7 +486,7 @@
           "refId": "A"
         },
         {
-          "expr": "sum(sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_rate) by (namespace) * on(namespace) group_left(label_kiosk_sh_account) kube_namespace_labels) by (label_kiosk_sh_account) * $core_cost_per_hour + sum(sum(container_memory_working_set_bytes{container!=\"\", image!=\"\"}) by (namespace) * on(namespace) group_left(label_kiosk_sh_account) kube_namespace_labels) by (label_kiosk_sh_account) / 1024 / 1024 / 1024 * $mem_gig_cost_per_hour",
+          "expr": "sum(sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_rate) by (namespace) * on(namespace) group_left(label_kiosk_sh_account) kube_namespace_labels{label_kiosk_sh_account!=\"\"}) by (label_kiosk_sh_account) * $core_cost_per_hour + sum(sum(container_memory_working_set_bytes{container!=\"\", image!=\"\"}) by (namespace) * on(namespace) group_left(label_kiosk_sh_account) kube_namespace_labels) by (label_kiosk_sh_account) / 1024 / 1024 / 1024 * $mem_gig_cost_per_hour",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -496,7 +496,7 @@
           "refId": "B"
         },
         {
-          "expr": "sum(sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_rate) by (namespace) * on(namespace) group_left(label_kiosk_sh_account) kube_namespace_labels) by (label_kiosk_sh_account)",
+          "expr": "sum(sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_rate) by (namespace) * on(namespace) group_left(label_kiosk_sh_account) kube_namespace_labels{label_kiosk_sh_account!=\"\"}) by (label_kiosk_sh_account)",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -506,7 +506,7 @@
           "refId": "C"
         },
         {
-          "expr": "sum(sum(container_memory_working_set_bytes{container!=\"\", image!=\"\"}) by (namespace) * on(namespace) group_left(label_kiosk_sh_account) kube_namespace_labels) by (label_kiosk_sh_account) / 1024 / 1024",
+          "expr": "sum(sum(container_memory_working_set_bytes{container!=\"\", image!=\"\"}) by (namespace) * on(namespace) group_left(label_kiosk_sh_account) kube_namespace_labels{label_kiosk_sh_account!=\"\"}) by (label_kiosk_sh_account) / 1024 / 1024",
           "format": "table",
           "hide": false,
           "instant": true,
