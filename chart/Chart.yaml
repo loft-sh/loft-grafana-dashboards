@@ -1,6 +1,7 @@
 apiVersion: v2
 name: loft-grafana-dashboards
 description: Grafana dashboards for loft
+icon: https://raw.githubusercontent.com/grafana/grafana/36fa54a28887679e006b5744f0ad6e63b8d857c3/public/img/logo_transparent_400x.png
 
 # A chart can be either an 'application' or a 'library' chart.
 #
